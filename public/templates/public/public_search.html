@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block title %}Medical subjects Search{% endblock %}
+
+{% block content %}
+    {{object.subject_name}}<br/>
+    <a href="{{object.url}}" target="_blank">{{object.url}}</a>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Patient List{% endblock %}
+
+{% block content %}
+    <div class="btn-group">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'doctor_search' %}" method="post">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{q}}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <a href="{% url 'diagnosis' %}" class="btn btn-info float-right">Diagnosis</a>
+    </div>
+    <p></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">PATIENT_ID</th>
+                <th scope="col">AGE</th>
+                <th scope="col">GENDER</th>
+                <th scope="col">CODE_DESCRIPTION</th>
+                <th scope="col">DATE</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if user.is_authenticated %}
+            {% for doctor in object_list %}
+                <tr>
+                    <td><a href="{% url 'detail' pk=doctor.id %}">{{doctor.PATIENT_ID}}</a></td>
+                    <td>{{doctor.AGE}}</td>
+                    <td>{{doctor.GENDER}}</td>
+                    <td>{{doctor.CODE_DESCRIPTION}}</td>
+                    <td>{{doctor.DATE}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr><td colspan="5" align="center">등록된 자료가 없습니다.</td></tr>
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block pagination %}
+    {% if is_paginated %}
+      <nav>
+        <ul class="pagination justify-content-center pagination-sm">
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="{% url 'list' %}?page={{ page_obj.previous_page_number }}" tabindex="-1">Prev</a>
+            </li>
+          {% endif %}
+
+          {% for page in page_range %}
+            <li {% if page == page_obj.number %} class="page-item active" {% endif %}>
+              <a class="page-link" href="{{request.path}}?page={{ page }}">{{ page }}</a>
+            </li>
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="{% url 'list' %}?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+          {% else %}
+            <li {% if not page_obj.has_next %}class="disabled"{% endif %}>
+              <a class="page-link" href="#">Next</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    {% endif %}
+{% endblock %}

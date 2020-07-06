@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Patient Detail{% endblock %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr><th colspan="2" align="center" scope="col">ID : {{object.PATIENT_ID}}  Patient Detail</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>PATIENT_ID</td><td>{{object.PATIENT_ID}}</td></tr>
+            <tr><td>CODE_NUMBER</td><td>{{object.CODE_NUMBER}}</td></tr>
+            <tr><td>CODE_DESCRIPTION</td><td>{{object.CODE_DESCRIPTION}}</td></tr>
+            <tr><td>DATE</td><td>{{object.DATE}}</td></tr>
+            <tr><td>AGE</td><td>{{object.AGE}}</td></tr>
+            <tr><td>GENDER</td><td>{{object.GENDER}}</td></tr>
+            <tr><td>NOTES</td><td>{{object.NOTES}}</td></tr>
+            <tr><td>CURRENTRX</td><td>{{object.CURRENTRX}}</td></tr>
+            <tr><td>DOSE</td><td>{{object.DOSE}}</td></tr>
+            <tr><td>FREQUENCY</td><td>{{object.FREQUENCY}}</td></tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block title %}- Login{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
+            <div class="alert alert-info">Please enter your login infomations.</div>
+
+            <form action="" method="post">
+                {{form.as_p}}
+                {% csrf_token %}
+                <input type="submit" value="Login" class="btn btn-primary">
+                <a href="{% url 'subject' %}" class="btn btn-info float-right">Go to Public</a>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{% endblock %}

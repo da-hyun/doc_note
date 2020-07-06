@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Patient List{% endblock %}
+
+{% block content %}
+    <div class="btn-group">
+        <a href="{% url 'diagnosis' %}" class="btn btn-info">Diagnosis</a>
+    </div>
+    <p></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">PATIENT_ID</th>
+                <th scope="col">AGE</th>
+                <th scope="col">GENDER</th>
+                <th scope="col">CODE_DESCRIPTION</th>
+                <th scope="col">DATE</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if user.is_authenticated %}
+            {% if not doctor_search %}
+            <tr><td colspan="5" align="center">검색 결과가 없습니다.</td></tr>
+            {% else %}
+                {% for doctor in doctor_search.all %}
+                <tr>
+                    <td><a href="{% url 'detail' pk=doctor.id %}">{{doctor.PATIENT_ID}}</a></td>
+                    <td>{{doctor.AGE}}</td>
+                    <td>{{doctor.GENDER}}</td>
+                    <td>{{doctor.CODE_DESCRIPTION}}</td>
+                    <td>{{doctor.DATE}}</td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+        <tr><td colspan="5" align="center">등록된 자료가 없습니다.</td></tr>
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
