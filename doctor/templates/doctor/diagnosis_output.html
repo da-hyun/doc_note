@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}- Diagnosis Output{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 panel panel-default">
+            <form action="{% url 'diagnosis_output' %}" method="post" class="form-inline my-2 my-lg-0" >
+                {% csrf_token %}
+                <textarea placeholder="진단 내용을 입력하세요." name="q" cols="70" rows="10">{{obj}}</textarea>
+                <br/><br/><br/>
+                <button class="btn btn-outline-success my-2 my-sm-0 float-right" type="submit">SCAN</button>
+            </form>
+            <br/>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Disease Name</th>
+                    <th scope="col">Probability</th>
+                </tr>
+            </thead>
+                <tr>
+                    <td>
+                    {% for i_obj in index %}
+                        {{i_obj}}<br/>
+                        <p></p>
+                    {% endfor %}
+                    </td>
+                    <td>
+                    {% for v_obj in values %}
+                        {{v_obj}}%<br/>
+                        <p></p>
+                    {% endfor %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{% endblock %}

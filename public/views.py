@@ -18,3 +18,6 @@ class MedicalSurveyView(CreateView):
     model = Survey
     fields = ['survey']
     template_name = 'public/survey.html'
+
+
+

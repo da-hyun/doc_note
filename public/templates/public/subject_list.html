@@ -5,20 +5,30 @@
 {% block content %}
     <h1> 진료 과목 </h1>
     <hr>
-    <div class="btn-group ">
-        <a href="{% url 'survey' %}" class="btn btn-info float-right">진료과목 검색</a>
+    <div class="btn-group float-right">
+        <a href="{% url 'survey' %}" class="btn btn-info">진료과목 검색</a>
     </div>
     <p></p>
 
-    <h6>원하시는 진료과를 선택하면 해당 진료과 정보를 확인하실 수 있습니다.</h6>
     <div align="center">
         <table class="table">
-        {% for subject in object_list %}
-        <a href="{% url 'public_search' pk=subject.id %}"><img src="/static/subject/{{subject.subject_name}}.png" width="150" height="150"/></a>
-        {% if subject.id == 5 or subject.id == 10 %}
-        <br/>
-        {% endif %}
-        {% endfor %}
+            <thead>
+                <tr>
+                    <th scope="col">원하시는 진료과를 선택하면 해당 진료과 정보를 확인하실 수 있습니다.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                    {% for subject in object_list %}
+                    <a href="{% url 'public_search' pk=subject.id %}"><img src="/static/subject/{{subject.subject_name}}.png" width="150" height="150"/></a>
+                    {% if subject.id == 5 or subject.id == 10 %}
+                    <br/>
+                    {% endif %}
+                    {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 {% endblock %}

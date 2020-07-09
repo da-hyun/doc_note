@@ -3,15 +3,19 @@
 {% block title %}Patient List{% endblock %}
 
 {% block content %}
-    <div class="btn-group">
-        <form class="form-inline my-2 my-lg-0" action="{% url 'doctor_search' %}" method="post">
-            {% csrf_token %}
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{q}}">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <a href="{% url 'diagnosis' %}" class="btn btn-info float-right">Diagnosis</a>
+
+    <div class="btn-group float-right">
+        <a href="{% url 'diagnosis' %}" class="btn btn-info ">Diagnosis</a>
     </div>
+
+    <form class="form-inline my-2 my-lg-0" action="{% url 'doctor_search' %}" method="post">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{q}}">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
     <p></p>
+
     <table class="table">
         <thead>
             <tr>

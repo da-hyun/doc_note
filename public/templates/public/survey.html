@@ -3,7 +3,7 @@
 {% block title %}Medical subjects Survey{% endblock %}
 
 {% block content %}
-
-        {{objects.survey}}<br/>
-
+    {% for object in object %}
+        <p>제목 : {{object.survey}}</p>
+    {% endfor %}
 {% endblock %}

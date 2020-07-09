@@ -22,13 +22,12 @@ if __name__ == '__main__':
 
 
 # https://bernardparah.com/importing-data-from-a-csv-file-using-django-shell/
-'''
+
 import csv
 import pandas as pd
 from doctor.models import Doctor
-from public.models import Subject
 
-
+'''
 with open('D:/ITWILL/project/data/doctor_py.csv','r') as f:
     dr = csv.DictReader(f)
     s = pd.DataFrame(dr)

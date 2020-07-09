@@ -23,3 +23,6 @@ class Doctor(models.Model):
 
 class DiagnosisNote(models.Model):
     note = models.TextField()
+
+    def get_absolute_url(self):
+        return reverse('diagnosis_output')

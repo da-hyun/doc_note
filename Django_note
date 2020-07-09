@@ -1,0 +1,72 @@
+# Django
+pip install django
+pip install pandas
+pip install pillow
+django-admin startproject config .
+python manage.py migrate
+python manage.py startapp doctor
+python manage.py makemigrations
+python manage.py createsuperuser
+>dahyun
+>qhqk7132@gmail.com
+>71323064
+python manage.py runserver
+
+
+# model.py
+데이터 베이스 사용을 쉽게 하기 위해 사용하는 도구
+웹 서비스를 만들면서 db에 저장하면서 사용할 데이터를 모델에서 만든다
+
+# migrations
+앱에서 db관련 변경사항이 있는지 확인하고 변경할 내용이 있으면 파일생성
+
+# admin.py
+model을 이용한 데이터 작업은 views.py만들지만 시간이 걸림
+또 view를 만들면서 확인하는 작업을 할때 미리 입력된 데이터 필요
+그래서 관리자 페이지에 미리 모델을 관리할수있게 등록
+관이자 페이지에서 보이는 내용의 변경, 기능추가 등을 하는 코드 입력파일
+
+# views.py
+제대로된 서비스를 위해
+
+# urls.py
+view를 만들면 이 view를 호출할 수 있도록 어떤 주소를 사용해 연결
+config 폴더에 있는 urls.py 파일은 루트 파일
+각 앱 폴더에 있는 urls.py 파일은 서브파일
+앱에 관한 urls내용은 루트 파일에 연결해줘야 동작
+
+# templates
+view의 내용을 어떻게 브라우저에 표시할지 결정
+
+
+
+# GitHub
+#.gitignore
+*.pyc
+*~
+/venv
+__pycache__
+db.sqlite3
+.DS_Store
+
+#setting.py 옵션 변경
+DEBUG = False
+ALLOWED_HOSTS = [‘*’]
+
+git init
+git add -A
+git commit -m "doctor_note"
+git remote add origin https://github.com/da-hyun/doc_note.git
+git push -u origin master
+
+
+
+pip freeze > requirements.txt
+
+pip install sklearn.feature_extraction.text
+pip install sklearn.preprocessing
+pip install tensorflow==2.0
+conda install python=3.7 tensorflow==2.0.0
+
+obj = Model.objects.last() #가장 최근에 저장된 models 객체가 반환된다
+

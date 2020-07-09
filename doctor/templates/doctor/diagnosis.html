@@ -6,12 +6,12 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8 panel panel-default">
-            <form action="" method="post" enctype="multipart/form-data">
-                {{form.as_p}}
+            <form action="{% url 'diagnosis_output' %}" method="post" class="form-inline my-2 my-lg-0" >
                 {% csrf_token %}
-                <input type="submit" value="SCAN" class="btn btn-primary">
+                <textarea placeholder="진단 내용을 입력하세요." name="q" cols="70" rows="10"></textarea>
+                <br/><br/><br/>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">SCAN</button>
             </form>
         </div>
-        <div class="col-md-2"></div>
     </div>
 {% endblock %}
